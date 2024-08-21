@@ -25,6 +25,9 @@ public class Main {
         System.out.println("Testing for common passwords: " + commonPassword(password));
         //checking special characters
         System.out.println("Testing for special characters: " + specialCharacters(password));
+        // Overall check
+        System.out.println(overallCheck(password));
+
 
     }
 
@@ -78,5 +81,15 @@ public static boolean commonPassword(String password) {
             }
         }
         return false;
+    }
+
+    //Overall Check
+    public static String overallCheck(String password) {
+        if (passwordLength(password) && containsDigits(password) && containsUpperCase(password) && containsLowerCase(password) && commonPassword(password) && specialCharacters(password)) {
+            System.out.println("Your password is valid");
+        }
+        else System.out.println("Your password is not valid");
+
+        return password;
     }
 }
