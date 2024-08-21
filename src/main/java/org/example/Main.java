@@ -1,6 +1,6 @@
 package org.example;
 
-
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class Main {
@@ -12,7 +12,7 @@ public class Main {
 
         System.out.print("Enter password: ");
         String password = scanner.next();
-        System.out.println(password);
+        //System.out.println(password);
         //checking length
         System.out.println("Testing length: " + passwordLength(password));
         //checking digits
@@ -21,15 +21,18 @@ public class Main {
         System.out.println("Testing uppercase: " + containsUpperCase(password));
         //checking lowercase
         System.out.println("Testing lowercase: " + containsLowerCase(password));
+        //checking common passwords
+        System.out.println("Testing for common passwords: " + commonPassword(password));
+
     }
 
     //Check length of password
-    private static boolean passwordLength(String password) {
+    public static boolean passwordLength(String password) {
         return password.length() >= 8;
     }
 
     //Check digits
-    private static boolean containsDigits(String password) {
+    public static boolean containsDigits(String password) {
 
         for (int i = 0; i < password.length(); i++) {
             if (Character.isDigit(password.charAt(i))) {
@@ -40,7 +43,7 @@ public class Main {
     }
 
     //Check uppercase
-    private static boolean containsUpperCase(String password) {
+    public static boolean containsUpperCase(String password) {
         for (int i = 0; i < password.length(); i++) {
             if (Character.isUpperCase(password.charAt(i))) {
                 return true;
@@ -50,7 +53,7 @@ public class Main {
     }
 
     //Check lowercase
-    private static boolean containsLowerCase(String password) {
+    public static boolean containsLowerCase(String password) {
         for (int i = 0; i < password.length(); i++) {
             if (Character.isLowerCase(password.charAt(i))) {
                 return true;
@@ -58,4 +61,10 @@ public class Main {
         }
         return false;
     }
+
+    //Check for common password
+public static boolean commonPassword(String password) {
+        String [] commonPasswords = {"123456789", "12345678", "hallo", "1234567890", "1234567", "password", "password1", "target123", "iloveyou", "gwekty123", "qwerty123", "qwertz", "qwertz123", "admin", "111111111"};
+    return Arrays.asList(commonPasswords).contains(password);
+}
 }
