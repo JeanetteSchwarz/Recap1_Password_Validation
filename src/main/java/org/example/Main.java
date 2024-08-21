@@ -23,6 +23,8 @@ public class Main {
         System.out.println("Testing lowercase: " + containsLowerCase(password));
         //checking common passwords
         System.out.println("Testing for common passwords: " + commonPassword(password));
+        //checking special characters
+        System.out.println("Testing for special characters: " + specialCharacters(password));
 
     }
 
@@ -65,6 +67,16 @@ public class Main {
     //Check for common password
 public static boolean commonPassword(String password) {
         String [] commonPasswords = {"123456789", "12345678", "hallo", "1234567890", "1234567", "password", "password1", "target123", "iloveyou", "gwekty123", "qwerty123", "qwertz", "qwertz123", "admin", "111111111"};
-    return Arrays.asList(commonPasswords).contains(password);
+    return !Arrays.asList(commonPasswords).contains(password);
 }
+
+//Check for special characters
+    public static boolean specialCharacters(String password) {
+        for (int i = 0; i < password.length(); i++) {
+            if (!Character.isLetter(password.charAt(i))) {
+                return true;
+            }
+        }
+        return false;
+    }
 }

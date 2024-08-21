@@ -94,9 +94,20 @@ void passwordLength_shouldReturnTrue_whenCalledWithWohnmobil(){
     }
 
     @Test
-    void commonPassword_shouldReturnTrue_whenCalledWithadmin(){
+    void commonPassword_shouldReturnFalse_whenCalledWithadmin(){
         //GIVEN
         String password = "admin";
+        boolean expected = false;
+        //WHEN
+        boolean actual = Main.commonPassword(password);
+        //THEN
+        assertFalse(actual);
+    }
+
+    @Test
+    void commonPassword_shouldReturnTrue_whenCalledWithCampingplatz(){
+        //GIVEN
+        String password = "Campingplatz";
         boolean expected = true;
         //WHEN
         boolean actual = Main.commonPassword(password);
@@ -105,12 +116,23 @@ void passwordLength_shouldReturnTrue_whenCalledWithWohnmobil(){
     }
 
     @Test
-    void commonPassword_shouldReturnFalse_whenCalledWithCampingplatz(){
+    void specialCharacter_shouldReturnTrue_whenCalledWithspecialExplanationMark(){
         //GIVEN
-        String password = "Campingplatz";
+        String password = "special!";
+        boolean expected = true;
+        //WHEN
+        boolean actual = Main.specialCharacters(password);
+        //THEN
+        assertTrue(actual);
+    }
+
+    @Test
+    void specialCharacter_shouldReturnFalse_whenCalledWithGarden(){
+        //GIVEN
+        String password = "Garden";
         boolean expected = false;
         //WHEN
-        boolean actual = Main.commonPassword(password);
+        boolean actual = Main.specialCharacters(password);
         //THEN
         assertFalse(actual);
     }
