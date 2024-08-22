@@ -84,12 +84,12 @@ public static boolean commonPassword(String password) {
     }
 
     //Overall Check
-    public static String overallCheck(String password) {
+    public static boolean overallCheck(String password) {
         if (passwordLength(password) && containsDigits(password) && containsUpperCase(password) && containsLowerCase(password) && commonPassword(password) && specialCharacters(password)) {
             System.out.println("Your password is valid");
         }
         else System.out.println("Your password is not valid");
 
-        return password;
+        return true;
     }
 }
