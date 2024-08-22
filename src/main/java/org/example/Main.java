@@ -90,14 +90,14 @@ public static boolean commonPassword(String password) {
     }
 
     //Overall Check
-    /*public static boolean overallCheck(String password) {
+    public static boolean overallCheck(String password) {
         if (passwordLength(password) && containsDigits(password) && containsUpperCase(password) && containsLowerCase(password) && commonPassword(password) && specialCharacters(password)) {
             System.out.println("Your password is valid");
         }
         else System.out.println("Your password is not valid");
 
         return true;
-    }*/
+    }
 
     //Generate random password
     public static String generatePassword(int lengthNewPassword) {

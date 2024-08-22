@@ -1,5 +1,6 @@
 package org.example;
 
+import org.junit.jupiter.api.RepeatedTest;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -137,6 +138,16 @@ void passwordLength_shouldReturnTrue_whenCalledWithWohnmobil(){
         assertFalse(actual);
     }
 
+@RepeatedTest(100)
+    void randomPassword_shouldReturnTrue_whenCalledWithOverallCheck(){
+    //GIVEN
+    String safePassword = Main.generatePassword(8);
+    boolean expected = true;
+    //WHEN
+    boolean actual = Main.overallCheck(safePassword);
+    //THEN
+    assertTrue(actual);
 
+}
 
 }
