@@ -1,6 +1,7 @@
 package org.example;
 
 import java.util.Arrays;
+import java.util.Random;
 import java.util.Scanner;
 
 public class Main {
@@ -26,7 +27,12 @@ public class Main {
         //checking special characters
         System.out.println("Testing for special characters: " + specialCharacters(password));
         // Overall check
-        System.out.println(overallCheck(password));
+        //System.out.println(overallCheck(password));
+        //Generate new password
+        System.out.println("Generate new password. Enter number of digits (minimum 8): ");
+        int lengthNewPassword = scanner.nextInt();
+        System.out.println("New valid password: " + generatePassword(lengthNewPassword));
+
 
 
     }
@@ -84,12 +90,33 @@ public static boolean commonPassword(String password) {
     }
 
     //Overall Check
-    public static boolean overallCheck(String password) {
+    /*public static boolean overallCheck(String password) {
         if (passwordLength(password) && containsDigits(password) && containsUpperCase(password) && containsLowerCase(password) && commonPassword(password) && specialCharacters(password)) {
             System.out.println("Your password is valid");
         }
         else System.out.println("Your password is not valid");
 
         return true;
+    }*/
+
+    //Generate random password
+    public static String generatePassword(int lengthNewPassword) {
+        String capitalCaseLetters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+        String lowerCaseLetters = "abcdefghijklmnopqrstuvwxyz";
+        String specialCharacters = "!@#$";
+        String numbers = "1234567890";
+        String combinedChars = capitalCaseLetters + lowerCaseLetters + specialCharacters + numbers;
+        Random random = new Random();
+        char[] safePassword = new char[lengthNewPassword];
+
+        safePassword[0] = lowerCaseLetters.charAt(random.nextInt(lowerCaseLetters.length()));
+        safePassword[1] = capitalCaseLetters.charAt(random.nextInt(capitalCaseLetters.length()));
+        safePassword[2] = specialCharacters.charAt(random.nextInt(specialCharacters.length()));
+        safePassword[3] = numbers.charAt(random.nextInt(numbers.length()));
+
+        for(int i = 4; i< lengthNewPassword ; i++) {
+            safePassword[i] = combinedChars.charAt(random.nextInt(combinedChars.length()));
+        }
+        return new String(safePassword);
     }
 }
